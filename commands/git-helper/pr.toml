@@ -1,0 +1,17 @@
+description = "Summarizes the changes in the current branch and generates a Pull Request draft."
+prompt = """
+<OBJECTIVE>
+Create a detailed Pull Request title and description for the current branch compared to the base branch.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Identify range**: Compare the current branch to `main` (or the default base branch). Use `git merge-base main HEAD` to find the common ancestor.
+2. **Get context**:
+   - Run `git log <merge_base>..HEAD --oneline` to see commit titles.
+   - Run `git diff <merge_base>..HEAD --stat` to see file changes.
+3. **Generate PR Draft**:
+   - **Title**: A clear, semantic title for the PR.
+   - **Description**: Sections for "Overview", "Key Changes", "Testing Done", and "Screenshots/Evidence" (if applicable).
+4. **Offer GitHub CLI integration**: Check if `gh` is available by running `gh --version`. If it is, offer to run `gh pr create --title "<title>" --body "<body>" --draft`.
+</INSTRUCTIONS>
+"""

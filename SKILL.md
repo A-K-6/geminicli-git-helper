@@ -30,6 +30,30 @@ When the user wants to review changes (e.g., "review this PR" or "review my chan
    - Check for architectural consistency and readability.
 4. **Feedback**: Provide structured feedback with severity levels (CRITICAL, HIGH, MEDIUM, LOW) and suggested code changes.
 
+### 3. Generating a Changelog
+When the user wants to generate release notes:
+1. **Identify Range**: Find the last tag or specified commit range.
+2. **Analyze Commits**: Parse commit messages for semantic types.
+3. **Format**: Group by type and format as Markdown.
+4. **Update File**: Ask to prepend to `CHANGELOG.md`.
+
+### 4. Pull Request Assistant
+When the user wants to prepare a PR:
+1. **Gather Data**: Get diff stats and commit list.
+2. **Generate Draft**: Create a structured title and description.
+3. **GitHub CLI**: If available, offer to create the PR directly.
+
+### 5. Safe Undo
+When the user wants to "undo" something:
+1. **Diagnose**: Analyze `git status` and recent history.
+2. **Clarify**: Identify what specifically should be undone.
+3. **Safe Command**: Propose the specific `reset`, `revert`, or `restore` command.
+
+### 6. Smart Staging
+When the user wants to stage changes:
+1. **Iterate**: Go through unstaged changes file by file.
+2. **Explain & Stage**: Explain the change and ask for confirmation to stage.
+
 ## Guidelines for Commit Messages
 - **Format**: `<type>(<scope>): <description>`
 - **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.

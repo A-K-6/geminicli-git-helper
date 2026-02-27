@@ -1,0 +1,16 @@
+description = "Interactively reviews and stages changes."
+prompt = """
+<OBJECTIVE>
+Step through unstaged changes and help the user decide what to stage for the next commit.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Identify changes**: Run `git diff --name-only` to see modified files.
+2. **Iterate**: For each modified file (or significant chunk):
+   - Show the diff using `git diff -U3 <file>`.
+   - Explain what the change does in plain language.
+   - Ask the user: "Stage this file/chunk? (yes/no/skip/edit)".
+3. **Execute**: Use `git add <file>` if confirmed.
+4. **Final Check**: Once the user is done, summarize what has been staged.
+</INSTRUCTIONS>
+"""

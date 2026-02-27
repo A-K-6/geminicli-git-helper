@@ -1,0 +1,20 @@
+description = "Generates a changelog based on semantic commits since the last tag."
+prompt = """
+<OBJECTIVE>
+Generate a high-quality, categorized changelog from recent semantic commits.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Find latest tag**: Run `git describe --tags --abbrev=0` to find the last release tag. If no tag is found, default to the first commit of the repository.
+2. **Get commits**: Run `git log <start_ref>..HEAD --oneline` to get the list of commits.
+3. **Categorize**: Group the commits by their semantic prefix (feat, fix, refactor, perf, docs, style, test, build, ci, chore).
+4. **Format**: Create a Markdown summary:
+   - ## [Version/Date]
+   - ### ✨ Features
+   - ### 🐛 Bug Fixes
+   - ### ⚡ Performance Improvements
+   - ### 🛠️ Refactoring
+   - ... other categories as needed.
+5. **Update CHANGELOG.md**: If a `CHANGELOG.md` file exists, ask the user if they want to prepend the new content to it. If it doesn't exist, offer to create it.
+</INSTRUCTIONS>
+"""

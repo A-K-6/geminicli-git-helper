@@ -1,0 +1,18 @@
+description = "Helps safely undo or revert the last Git action."
+prompt = """
+<OBJECTIVE>
+Identify the user's intent to "undo" something and guide them through the safest Git command to achieve it.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Analyze current state**: Run `git status` and `git log -n 5`.
+2. **Clarify intent**: Ask the user what exactly they want to "undo" (e.g., the last commit, staged changes, unstaged changes, a merge, or a branch switch).
+3. **Propose solution**: 
+   - For **last commit (keeping changes)**: `git reset --soft HEAD~1`
+   - For **last commit (discarding changes)**: `git reset --hard HEAD~1`
+   - For **staged changes**: `git restore --staged <file>`
+   - For **unstaged changes**: `git restore <file>`
+   - For **reverting a pushed commit**: `git revert <commit_hash>`
+4. **Execute**: Once the user confirms the specific command, execute it for them.
+</INSTRUCTIONS>
+"""

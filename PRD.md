@@ -22,7 +22,14 @@ A Gemini CLI extension and skill designed to assist users with Git workflows, sp
 ## Implementation Status
 - **Skill**: Completed and packaged as `git-helper.skill`.
 - **Extension**: Completed in the `extension/` directory.
-- **Commands**: `/commit` and `/review` implemented.
+- **Commands**: 
+  - All git commands are located in `commands/git-helper/`.
+  - `/commit`: Semantic commit generator.
+  - `/review`: Detailed code reviewer.
+  - `/changelog`: Automated release notes generator.
+  - `/pr`: Pull Request assistant.
+  - `/undo`: Safe Git undo/revert helper.
+  - `/add`: Smart interactive staging.
 
 ## Installation Instructions
 ### Skill
