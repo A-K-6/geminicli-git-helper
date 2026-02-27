@@ -4,21 +4,21 @@ A comprehensive extension and skill for [Gemini CLI](https://github.com/google/g
 
 ## Features
 
-- **Semantic Commit Generator (`/commit`)**:
+- **Semantic Commit Generator (`/gh.commit`)**:
   - Automatically analyzes staged changes (`git diff --staged`).
   - Generates commit messages following the [Conventional Commits](https://www.conventionalcommits.org/) specification.
   - Requires explicit user approval before executing the commit.
-- **Deep Code Review (`/review`)**:
+- **Deep Code Review (`/gh.review`)**:
   - Reviews changes between branches or specific commits.
   - Identifies logic bugs, security vulnerabilities, and performance bottlenecks.
   - Provides actionable code suggestions in diff format.
-- **Smart Staging (`/add`)**:
+- **Smart Staging (`/gh.add`)**:
   - Interactively steps through and stages changes.
-- **Pull Request Assistant (`/pr`)**:
+- **Pull Request Assistant (`/gh.pr`)**:
   - Summarizes changes and generates a Pull Request draft.
-- **Changelog Generator (`/changelog`)**:
+- **Changelog Generator (`/gh.changelog`)**:
   - Generates a categorized changelog from recent semantic commits.
-- **Undo/Revert Helper (`/undo`)**:
+- **Undo/Revert Helper (`/gh.undo`)**:
   - Safely helps you undo or revert the last Git action.
 - **Workflow Skill**:
   - Enhances the agent's native understanding of Git procedures.
@@ -33,7 +33,7 @@ gemini skills install https://github.com/A-K-6/geminicli-git-helper
 ```
 
 ### 2. Install the Extension
-The extension adds specific commands like `/commit`, `/review`, `/add`, `/pr`, `/changelog`, and `/undo` to your CLI.
+The extension adds specific commands like `/gh.commit`, `/gh.review`, `/gh.add`, `/gh.pr`, `/gh.changelog`, and `/gh.undo` to your CLI.
 ```bash
 gemini extensions install https://github.com/A-K-6/geminicli-git-helper
 ```
