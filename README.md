@@ -37,16 +37,6 @@ If you are already in an interactive Gemini CLI session, reload to enable the ne
 /extensions reload
 ```
 
-## Publishing to the Gallery
-
-To have this extension automatically discovered and listed in the [Gemini CLI Extensions Gallery](https://geminicli.com/extensions):
-
-1. Ensure the repository is **public**.
-2. Go to your repository settings on GitHub.
-3. In the **About** section, add the topic: `gemini-cli-extension`.
-
-The Gemini CLI crawler will automatically find the `gemini-extension.json` at the root and add it to the gallery.
-
 ## Development
 
 - `PRD.md`: Project Requirements Document.
