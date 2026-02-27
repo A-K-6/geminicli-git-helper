@@ -1,0 +1,6 @@
+{
+  "name": "git-helper",
+  "version": "0.1.0",
+  "description": "Git helper for commits and reviews",
+  "contextFileName": "GEMINI.md"
+}

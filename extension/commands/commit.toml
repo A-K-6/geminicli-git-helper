@@ -1,0 +1,21 @@
+description = "Generates a semantic commit message for staged changes and commits them after approval."
+prompt = """
+<OBJECTIVE>
+Generate a high-quality, semantic commit message based on the currently staged changes and execute the commit after user confirmation.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Check for staged changes**: Run `git diff --staged`.
+2. **Handle no changes**: If no changes are staged, check for unstaged changes with `git diff`.
+   - If there are unstaged changes, ask the user if they want to stage them first or if they want you to stage them.
+   - If there are no changes at all, inform the user and stop.
+3. **Analyze changes**: Read the diff and understand the intent.
+4. **Generate message**: Create a message following Conventional Commits format:
+   - `<type>(<scope>): <short summary>`
+   - Use imperative mood.
+   - Add a body if the change is complex.
+   - Add 'BREAKING CHANGE' footer if applicable.
+5. **Present and Confirm**: Show the proposed message to the user. Use `ask_user` to get confirmation.
+6. **Commit**: If confirmed, run `git commit -m "<message>"`.
+</INSTRUCTIONS>
+"""

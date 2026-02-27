@@ -1,0 +1,19 @@
+description = "Reviews the code changes between branches or commits."
+prompt = """
+<OBJECTIVE>
+Perform a comprehensive code review of the changes in the current branch compared to a base branch (defaulting to main/master).
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Determine the base branch**: Check if the base branch is `main` or `master` or something else.
+2. **Retrieve the diff**: Run `git diff -U5 origin/HEAD..HEAD` or a similar command to get the changes in the current branch.
+3. **Analyze the changes**:
+   - Summarize the intent.
+   - Evaluate logic, performance, and security.
+   - Identify bugs or potential regressions.
+4. **Format Output**: Provide a structured review with:
+   - Summary of changes.
+   - List of findings categorized by severity (CRITICAL, HIGH, MEDIUM, LOW).
+   - Actionable code suggestions.
+</INSTRUCTIONS>
+"""
