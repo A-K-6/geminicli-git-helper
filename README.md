@@ -12,6 +12,14 @@ A comprehensive extension and skill for [Gemini CLI](https://github.com/google/g
   - Reviews changes between branches or specific commits.
   - Identifies logic bugs, security vulnerabilities, and performance bottlenecks.
   - Provides actionable code suggestions in diff format.
+- **Smart Staging (`/add`)**:
+  - Interactively steps through and stages changes.
+- **Pull Request Assistant (`/pr`)**:
+  - Summarizes changes and generates a Pull Request draft.
+- **Changelog Generator (`/changelog`)**:
+  - Generates a categorized changelog from recent semantic commits.
+- **Undo/Revert Helper (`/undo`)**:
+  - Safely helps you undo or revert the last Git action.
 - **Workflow Skill**:
   - Enhances the agent's native understanding of Git procedures.
   - Triggers on natural language requests like "Review my changes" or "Help me commit this."
@@ -25,7 +33,7 @@ gemini skills install https://github.com/A-K-6/geminicli-git-helper
 ```
 
 ### 2. Install the Extension
-The extension adds specific `/commit` and `/review` commands to your CLI.
+The extension adds specific commands like `/commit`, `/review`, `/add`, `/pr`, `/changelog`, and `/undo` to your CLI.
 ```bash
 gemini extensions install https://github.com/A-K-6/geminicli-git-helper
 ```
@@ -36,6 +44,12 @@ If you are already in an interactive Gemini CLI session, reload to enable the ne
 /skills reload
 /extensions reload
 ```
+
+## Gallery & Discoverability
+
+To make this extension and skill discoverable in the Gemini CLI gallery, ensure the following topics are added to your GitHub repository:
+- `gemini-extension`
+- `gemini-skill`
 
 ## Development
 
