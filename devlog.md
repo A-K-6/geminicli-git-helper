@@ -1,8 +1,7 @@
 # Devlog - Gemini CLI Git Helper
 
-## [2026-02-27] - Initial Setup
-- Initialized project.
-- Created `PRD.md` to define scope and features.
-- Initialized and packaged `git-helper` skill.
-- Created `git-helper` extension with `/commit` and `/review` commands.
-- Verified installation methods for both skill and extension.
+## [2026-02-27] - Project Reorganization
+- Reorganized project structure to put `gemini-extension.json` and `SKILL.md` at the root for better discoverability.
+- Added `package.json` for compliance with official extension documentation.
+- Updated `README.md` with instructions on how to publish to the official Gemini CLI gallery using GitHub topics.
+- Removed local `git-helper.skill` in favor of repository-based installation.

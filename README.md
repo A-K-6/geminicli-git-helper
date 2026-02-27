@@ -37,24 +37,24 @@ If you are already in an interactive Gemini CLI session, reload to enable the ne
 /extensions reload
 ```
 
-## Usage
+## Publishing to the Gallery
 
-### Commands
-- `/commit`: Analyze staged changes and commit them with a generated message.
-- `/review`: Review the changes in the current branch against the base branch.
+To have this extension automatically discovered and listed in the [Gemini CLI Extensions Gallery](https://geminicli.com/extensions):
 
-### Natural Language
-Because of the `git-helper` skill, you can also use natural language:
-- "Look at my staged changes and suggest a commit message."
-- "Perform a code review on this PR."
-- "What's the difference between my branch and main?"
+1. Ensure the repository is **public**.
+2. Go to your repository settings on GitHub.
+3. In the **About** section, add the topic: `gemini-cli-extension`.
+
+The Gemini CLI crawler will automatically find the `gemini-extension.json` at the root and add it to the gallery.
 
 ## Development
 
 - `PRD.md`: Project Requirements Document.
 - `devlog.md`: Development history and progress.
-- `git-helper/`: Source directory for the skill.
-- `extension/`: Source directory for the extension commands.
+- `gemini-extension.json`: Extension manifest.
+- `GEMINI.md`: Extension context/playbook.
+- `SKILL.md`: Skill definition and workflow.
+- `commands/`: Custom slash commands.
 
 ## License
 MIT
