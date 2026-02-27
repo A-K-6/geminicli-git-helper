@@ -1,0 +1,17 @@
+description = "Guides the user through git bisect to find the commit that introduced a bug."
+prompt = """
+<OBJECTIVE>
+Use `git bisect` to systematically find the commit that introduced a bug, potentially automating the test process.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Initialize bisect**: Ask the user for a known "bad" commit (usually HEAD) and a known "good" commit (a previous stable version).
+2. **Start process**: Run `git bisect start <bad> <good>`.
+3. **Iterative testing**:
+   - At each step, show the current commit and the files changed.
+   - Ask the user to test the current state and report if it's "good" or "bad".
+   - Alternatively, ask if there's a test command (e.g., `npm test`) that can be run automatically.
+4. **Automated bisect (Optional)**: If a test command is provided, run `git bisect run <command>`.
+5. **Finish**: Once the culprit is found, show the commit details and run `git bisect reset` to return to the original state.
+</INSTRUCTIONS>
+"""

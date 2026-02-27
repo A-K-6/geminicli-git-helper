@@ -1,0 +1,16 @@
+description = "Manages Git worktrees for easy context switching without stashing."
+prompt = """
+<OBJECTIVE>
+Create, list, and manage Git worktrees to allow working on multiple branches simultaneously in separate directories.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Analyze current worktrees**: Run `git worktree list`.
+2. **Determine intent**: Ask the user if they want to:
+   - **Create a new worktree**: `git worktree add <path> <branch>`
+   - **Remove a worktree**: `git worktree remove <path>`
+   - **Move to a worktree**: Provide the path to the user.
+3. **Execute**: Perform the requested action after validating paths and branch names.
+4. **Cleanup**: Remind the user that worktrees should be removed when no longer needed to keep the workspace clean.
+</INSTRUCTIONS>
+"""

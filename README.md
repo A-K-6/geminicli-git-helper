@@ -20,6 +20,16 @@ A comprehensive extension and skill for [Gemini CLI](https://github.com/google/g
   - Generates a categorized changelog from recent semantic commits.
 - **Undo/Revert Helper (`/gh.undo`)**:
   - Safely helps you undo or revert the last Git action.
+- **Smart Synchronizer (`/gh.sync`)**:
+  - Fetches updates and analyzes potential conflicts before merging or rebasing.
+- **History Polisher (`/gh.fixup`)**:
+  - Identifies 'fixup!' commits and offers to automatically squash them using interactive rebase.
+- **Bug Hunter (`/gh.bisect`)**:
+  - Guides the user through git bisect to find the commit that introduced a bug.
+- **Context Switcher (`/gh.worktree`)**:
+  - Manages Git worktrees for easy context switching without stashing.
+- **Narrative Blame (`/gh.explain`)**:
+  - Explains the 'why' behind a change by analyzing commit history and context.
 - **Workflow Skill**:
   - Enhances the agent's native understanding of Git procedures.
   - Triggers on natural language requests like "Review my changes" or "Help me commit this."

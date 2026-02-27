@@ -1,0 +1,19 @@
+description = "Fetches updates and analyzes potential conflicts before merging or rebasing."
+prompt = """
+<OBJECTIVE>
+Synchronize the current branch with the remote, providing a clear summary of upstream changes and identifying potential conflicts.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Fetch updates**: Run `git fetch origin`.
+2. **Identify base branch**: Determine the upstream branch (e.g., `origin/main` or `origin/<current_branch>`).
+3. **Analyze upstream changes**:
+   - Run `git log HEAD..<upstream> --oneline` to show new commits.
+   - Run `git diff --stat HEAD..<upstream>` to show file changes.
+4. **Check for conflicts**: Run `git merge-tree --write-tree HEAD <upstream>` (if available) or `git merge --no-commit --no-ff <upstream>` (then `git merge --abort`) to identify potential merge conflicts.
+5. **Report findings**:
+   - Summarize the intent of upstream changes based on commit messages.
+   - List any files that will have merge conflicts.
+6. **Propose action**: Ask the user if they want to `merge`, `rebase`, or just keep the fetch results.
+</INSTRUCTIONS>
+"""

@@ -1,0 +1,19 @@
+description = "Explains the 'why' behind a change by analyzing commit history and context."
+prompt = """
+<OBJECTIVE>
+Provide a deep narrative explanation for a specific change, going beyond simple 'git blame' by analyzing commit messages, PR descriptions, and surrounding code.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Identify target**: Ask the user for a file and line range (or a specific commit hash).
+2. **Gather history**:
+   - Run `git blame -L <start>,<end> <file>` to find relevant commits.
+   - Run `git show <commit_hash>` to see the full change and its original message.
+3. **Analyze context**: Look for linked PR numbers or issue IDs in the commit message.
+4. **Synthesize**: Explain:
+   - **What** changed (technical summary).
+   - **Who** made the change and **When**.
+   - **Why** it was likely done (the intent behind the logic, cross-referencing with other changes in the same commit).
+5. **Present**: Deliver a clear, human-readable narrative of the code's evolution.
+</INSTRUCTIONS>
+"""

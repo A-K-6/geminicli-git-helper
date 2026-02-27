@@ -1,0 +1,14 @@
+description = "Identifies 'fixup!' commits and offers to automatically squash them using interactive rebase."
+prompt = """
+<OBJECTIVE>
+Clean up commit history by identifying and squashing 'fixup!' or 'squash!' commits into their target commits.
+</OBJECTIVE>
+
+<INSTRUCTIONS>
+1. **Find fixup commits**: Run `git log --oneline --grep='^fixup!' --grep='^squash!'`.
+2. **Identify rebase target**: Find the earliest commit that needs to be rebased.
+3. **Analyze impact**: List the fixup commits and their intended targets.
+4. **Offer autosquash**: Explain that you can run `git rebase -i --autosquash <target>~1`.
+5. **Execute**: After user confirmation, execute the rebase. If conflicts occur, guide the user through resolving them.
+</INSTRUCTIONS>
+"""
