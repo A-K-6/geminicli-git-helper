@@ -21,13 +21,13 @@ A comprehensive extension and skill for [Gemini CLI](https://github.com/google/g
 ### 1. Install the Skill
 The skill provides the procedural knowledge for the agent to handle Git tasks effectively.
 ```bash
-gemini skills install ./git-helper.skill
+gemini skills install https://github.com/A-K-6/geminicli-git-helper
 ```
 
 ### 2. Install the Extension
 The extension adds specific `/commit` and `/review` commands to your CLI.
 ```bash
-gemini extensions install ./extension
+gemini extensions install https://github.com/A-K-6/geminicli-git-helper
 ```
 
 ### 3. Reload
