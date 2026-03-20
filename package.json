@@ -1,6 +1,6 @@
 {
   "name": "git-helper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Gemini CLI extension and skill for semantic commits and code reviews.",
   "main": "index.js",
   "repository": {
