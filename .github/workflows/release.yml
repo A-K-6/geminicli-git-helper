@@ -1,0 +1,81 @@
+name: Automatic Release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        id: versioning
+        run: |
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            # If triggered by a tag push, use the tag name
+            VERSION=${GITHUB_REF#refs/tags/v}
+            TAG_NAME=$GITHUB_REF
+          else
+            # If triggered by a push to main, check package.json
+            VERSION=$(jq -r .version package.json)
+            TAG_NAME="v$VERSION"
+            
+            # Check if this tag already exists
+            if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+              echo "Version $TAG_NAME already exists. Skipping release."
+              echo "skip=true" >> $GITHUB_OUTPUT
+            else
+              echo "New version detected: $TAG_NAME"
+              echo "skip=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_OUTPUT
+
+      - name: Create Tag
+        if: steps.versioning.outputs.skip == 'false' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag ${{ steps.versioning.outputs.TAG_NAME }}
+          git push origin ${{ steps.versioning.outputs.TAG_NAME }}
+
+      - name: Create Archives
+        if: steps.versioning.outputs.skip != 'true'
+        run: |
+          mkdir -p dist
+          # Create generic archives
+          tar -czf dist/git-helper.tar.gz --exclude='.git*' --exclude='dist' .
+          zip -r dist/git-helper.zip . -x "*.git*" "dist/*"
+          
+          # Create platform-specific archives (Gemini CLI naming convention)
+          cp dist/git-helper.tar.gz dist/linux.git-helper.tar.gz
+          cp dist/git-helper.tar.gz dist/darwin.git-helper.tar.gz
+          cp dist/git-helper.zip dist/win32.git-helper.zip
+
+      - name: Create GitHub Release
+        if: steps.versioning.outputs.skip != 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.versioning.outputs.TAG_NAME }}
+          files: |
+            dist/git-helper.tar.gz
+            dist/git-helper.zip
+            dist/linux.git-helper.tar.gz
+            dist/darwin.git-helper.tar.gz
+            dist/win32.git-helper.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
